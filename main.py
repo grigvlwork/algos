@@ -29,10 +29,10 @@ class MyWidget(QMainWindow):
         self.source_te.clear()
 
     def pep8(self):
-        text = '<sol1>\n```\n' + self.code1_te.toPlainText() + '\n```\n</sol1>\n\n' + \
-               '<sol2>\n```\n' + self.code2_te.toPlainText() + '\n```\n</sol2>\n\n' + \
-               '<sol3>\n```\n' + self.code3_te.toPlainText() + '\n```\n</sol3>\n\n' + \
-               '<sol4>\n```\n' + self.code4_te.toPlainText() + '\n```\n</sol4>'
+        text = '<sol1>\n\n```\n' + self.code1_te.toPlainText() + '\n```\n</sol1>\n\n' + \
+               '<sol2>\n\n```\n' + self.code2_te.toPlainText() + '\n```\n</sol2>\n\n' + \
+               '<sol3>\n\n```\n' + self.code3_te.toPlainText() + '\n```\n</sol3>\n\n' + \
+               '<sol4>\n\n```\n' + self.code4_te.toPlainText() + '\n```\n</sol4>'
         self.source_te.clear()
         self.source_te.appendPlainText(text)
 
