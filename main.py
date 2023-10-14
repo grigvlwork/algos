@@ -3,6 +3,7 @@ import traceback
 import subprocess
 import autopep8
 import sys
+import re
 from PyQt5 import uic  # Импортируем uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 
@@ -16,6 +17,8 @@ def run_text(text):
     else:
         return completed_process.stderr
 
+def remove_comments(code):
+    return re.sub(r'#.*', '', code)
 
 class MyWidget(QMainWindow):
     def __init__(self):
@@ -44,28 +47,28 @@ class MyWidget(QMainWindow):
             code = code.replace('```', '').strip()
             code = autopep8.fix_code(code)
             self.code1_te.appendPlainText(code)
-            self.result1_lb.setText(run_text(code))
+            self.result1_lb.setText(run_text(remove_comments(code)))
         if all(x in t for x in ['<sol2>', '</sol2>']):
             code = t[t.find('<sol2>') + 6:t.find('</sol2>')]
             self.code2_te.clear()
             code = code.replace('```', '').strip()
             code = autopep8.fix_code(code)
             self.code2_te.appendPlainText(code)
-            self.result2_lb.setText(run_text(code))
+            self.result2_lb.setText(run_text(remove_comments(code)))
         if all(x in t for x in ['<sol3>', '</sol3>']):
             code = t[t.find('<sol3>') + 6:t.find('</sol3>')]
             self.code3_te.clear()
             code = code.replace('```', '').strip()
             code = autopep8.fix_code(code)
             self.code3_te.appendPlainText(code)
-            self.result3_lb.setText(run_text(code))
+            self.result3_lb.setText(run_text(remove_comments(code)))
         if all(x in t for x in ['<sol4>', '</sol4>']):
             code = t[t.find('<sol4>') + 6:t.find('</sol4>')]
             self.code4_te.clear()
             code = code.replace('```', '').strip()
             code = autopep8.fix_code(code)
             self.code4_te.appendPlainText(code)
-            self.result4_lb.setText(run_text(code))
+            self.result4_lb.setText(run_text(remove_comments(code)))
 
 
 if __name__ == '__main__':
